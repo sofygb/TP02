@@ -13,12 +13,14 @@ let agregarElemento = () => {
     
     //Get element y create element
     var ElementoPrevio = document.getElementById("input"), textoElemento = document.getElementById("input").innerText;
-    var nuevoElemento = document.createElement("li"), nuevoTexto = textoElemento;
-
-    nuevoElemento.appendChild(nuevoTexto);
+    var nuevoElemento = document.createElement("li");
+    nuevoElemento.innerText = textoElemento;
 
     // añade el elemento creado y su contenido al DOM
-    document.body.insertBefore(nuevoElemento, ElementoPrevio);
+    //document.body.insertBefore(nuevoElemento, ElementoPrevio);
+
+    nuevoElemento.before(document.getElementById("element"));
+    //document.body.before(document.getElementById("element"));
 }
 opcionMasRapida = () => {
     var mayorTachado, elementosTachados;
