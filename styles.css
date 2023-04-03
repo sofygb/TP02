@@ -1,3 +1,27 @@
 .tachado {
-    text-decoration: overline;
+    text-decoration: line-through;
 }
+.notachado{
+    text-decoration: none;
+}
+
+input[type=checkbox]:checked + label.strikethrough {
+    text-decoration:line-through;
+ }
+ #firstCheckboxStretched:checked + label {
+    color:grey;
+    text-decoration: line-through;
+  }
+ #secondCheckboxStretched:checked + label {
+    color:grey;
+    text-decoration: line-through;
+  }
+  #thirdCheckboxStretched:checked + label {
+    color:grey;
+    text-decoration: line-through;
+  }
+  #input:checked + label {
+    color:grey;
+    text-decoration: line-through;
+  }
+  
