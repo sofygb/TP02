@@ -1,11 +1,10 @@
 //Lista con objetos
-let lista = [];
+let lista = []; //Hay que agregar los objetos ya que no se los asigna nunca
 
 const agregarElemento = () => {
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
     //hoy.toUTCString(); // Devuelve "Sat, 13 Jun 2020 18:30:00 GMT"
-    lista.push(objeto);
     console.log(lista);
     //Get element y create element
     var ul = document.getElementById("list"); 
@@ -22,12 +21,15 @@ const agregarElemento = () => {
     input.setAttribute("id", "forthCheckboxStretched");
     
     var label = document.createElement("label");
-    label.classList.add('form-check-label', 'stretched-link');
+    label.classList.add('form-check-label', 'stretched-link', 'notachado');
     label.innerText = valor;
     label.setAttribute("for", "forthCheckboxStretched");
     
     li.appendChild(input);
     li.appendChild(label);
+    
+    //li.childElementCount - Puede servir para una lista
+    li.firstElementChild
     
     //li.appendChild(document.createTextNode(valor));  //lo que está dentro del elemento ul
     li.setAttribute("id", "element"); // setea el id
@@ -38,30 +40,41 @@ const agregarElemento = () => {
     //li.body.before(document.getElementById("element"));
     let objeto = {
         elemento: li,
+        texto: valor,
+        idInput: input.className("id"),
+        idLabel: label.className("id"),
         fechacreacion: hoy,
         fechaTachado: null
     };
+    lista.push(objeto);
 }
 
 opcionMasRapida = () => { //restar fechas, fechacreación - fechatachado
-    var mayorTachado, elementosTachados;
+    var mayorTachado;
+    const tiempoTranscurrido = Date.now();
+    const hoy = new Date(tiempoTranscurrido);
     for(var i = 1; i <= lista.length; i++){
-        if(lista[i].fechaTachado!=null){
-            const fechaTachadoMs = lista[i].fechaTachado.
-            var resta = 
+        if(lista[i].fechaTachado!= null){
+            const fechaTachadoMs = lista[i].fechaTachado
+            var resta = hoy - fechaTachadoMs
+            console.log(resta)
+            lista[i].texto.style.color = "green";
+            alert(resta)
         }
     }
 }
 
-const cambiarEstilo = () => {
-    let element = document.getElementById("flexCheckDefault");
-    let element2 = document.getElementById("labelCheckbox");
-    console.log(element.tachado);
+const cambiarEstilo = (elemento) => {
+    //let input = document.getElementById("flexCheckDefault");
+    console.log(elemento)
+    let input = elemento
+    let label = document.getElementById("labelCheckbox")
+    console.log(label.style.textDecoration);
     
-    if(element.tachado == true){
-        element2.classList.add('chequeado')
+    if(label.style.textDecoration === "none"){
+        label.style.textDecoration = "overline"
     }
     else{
-        element2.classList.remove('chequeado')
+        label.style.textDecoration = "none"
     }
 }
