@@ -46,7 +46,8 @@ const agregarElemento = () => { //Agrega el nuevo elemento - hoy.toUTCString(); 
     input.type = 'checkbox';
     input.classList.add('form-check-input', 'me-1');
     input.value=0;
-    input.setAttribute("id", "forthCheckboxStretched");
+    input.setAttribute("class", "forthCheckboxStretched");
+    input.setAttribute("onclick", cambiarEstilo(e));
     
     var label = document.createElement("label");
     label.classList.add('form-check-label', 'stretched-link', 'notachado');
@@ -60,9 +61,22 @@ const agregarElemento = () => { //Agrega el nuevo elemento - hoy.toUTCString(); 
     li.firstElementChild
     
     //li.appendChild(document.createTextNode(valor));  //lo que está dentro del elemento ul
-    li.setAttribute("id", "element"); // setea el id
+    li.setAttribute("class", "element"); // setea el id
     ul.appendChild(li);
-
+    
+    
+    //nuevoElemento.before(document.getElementById("element"));
+    //li.body.before(document.getElementById("element"));
+    let objeto = {
+        elemento: li,
+        texto: valor,
+        idInput: input.className("class"),
+        idLabel: label.className("class"),
+        fechacreacion: hoy,
+        fechaTachado: null,
+    };
+    lista.push(objeto);
+    
     agregarALista(listaElementos.length+1,input,valor,hoy,null,li)
     agregarALista(listaElementos.length+1,label,valor,hoy,null,li)
 }
@@ -86,13 +100,24 @@ const cambiarEstilo = (elemento) => {
     //let input = document.getElementById("flexCheckDefault");
     console.log(elemento)
     let input = elemento
+    let padre = elemento.parentNode
+    let clase = document.getElementsByClassName("class")
     let label = document.getElementById("labelCheckbox")
+    
+    //input.parentNode
     console.log(label.style.textDecoration);
     
-    if(label.style.textDecoration === "none"){
+    for(var i = 0; i ){
+        if(i.checked){
+            checked.parentNode
+            //obtener cuales son los hijos y buscar cual tiene el texto -> agregar/sacar clase tachado
+        }
+
+    }
+    /*if(label.style.textDecoration === "none"){
         label.style.textDecoration = "overline"
     }
     else{
         label.style.textDecoration = "none"
-    }
+    } */
 }
