@@ -1,14 +1,42 @@
-//Lista con objetos
-let lista = []; //Hay que agregar los objetos ya que no se los asigna nunca
+//Lista con objetos. La lista empieza en 1
+let listaElementos = [
+    id,
+    elemento,
+    texto,
+    fechacreacion,
+    fechaTachado,
+    padre
+];
 
-const agregarElemento = () => {
+const agregarALista = (id,elemento,texto,fechacreacion,fechaTachado,padre) => {
+    let objeto = {
+        idThis: id,
+        elementoThis: elemento,
+        textoThis: texto,
+        fechacreacionThis: fechacreacion,
+        fechaTachadoThis: fechaTachado,
+        padreThis: padre
+    }
+    listaElementos.push(objeto);
+}
+const modififcarLista = (id,elemento,texto,fechacreacion,fechaTachado,padre) => {
+    let objeto = {
+        idThis: id,
+        elementoThis: elemento,
+        textoThis: texto,
+        fechacreacionThis: fechacreacion,
+        fechaTachadoThis: fechaTachado,
+        padreThis: padre
+    }
+    listaElementos[id] = objeto => objeto.id === listaElementos[id]
+}
+
+const agregarElemento = () => { //Agrega el nuevo elemento - hoy.toUTCString(); // Devuelve "Sat, 13 Jun 2020 18:30:00 GMT"
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
-    //hoy.toUTCString(); // Devuelve "Sat, 13 Jun 2020 18:30:00 GMT"
-    console.log(lista);
+    console.log(listaElementos);
     //Get element y create element
     var ul = document.getElementById("list"); 
-    //var ElementoPrevio = document.getElementById("input"); 
     var valor = document.getElementById("input").value;
     
     var li = document.createElement("li");
@@ -34,19 +62,9 @@ const agregarElemento = () => {
     //li.appendChild(document.createTextNode(valor));  //lo que está dentro del elemento ul
     li.setAttribute("id", "element"); // setea el id
     ul.appendChild(li);
-    
-    
-    //nuevoElemento.before(document.getElementById("element"));
-    //li.body.before(document.getElementById("element"));
-    let objeto = {
-        elemento: li,
-        texto: valor,
-        idInput: input.className("id"),
-        idLabel: label.className("id"),
-        fechacreacion: hoy,
-        fechaTachado: null
-    };
-    lista.push(objeto);
+
+    agregarALista(listaElementos.length+1,input,valor,hoy,null,li)
+    agregarALista(listaElementos.length+1,label,valor,hoy,null,li)
 }
 
 opcionMasRapida = () => { //restar fechas, fechacreación - fechatachado
@@ -58,7 +76,7 @@ opcionMasRapida = () => { //restar fechas, fechacreación - fechatachado
             const fechaTachadoMs = lista[i].fechaTachado
             var resta = hoy - fechaTachadoMs
             console.log(resta)
-            lista[i].texto.style.color = "green";
+            lista[i].style.color = "green";
             alert(resta)
         }
     }
